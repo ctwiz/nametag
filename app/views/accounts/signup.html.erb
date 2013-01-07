@@ -1,0 +1,24 @@
+<%=form_for @user do |f|%>
+<div class="box_container navbar-inner main_box">
+  <div class="box navbar">
+    <div class="box_title brand">
+      Create a new account
+    </div>
+    <div class="box_body brand">
+      <%=f.label "First name"%>
+      <%=f.text_field :first_name%>
+      <%=f.label "Last name"%>
+      <%=f.text_field :last_name%>
+      <%=f.label "Email"%>
+      <%=f.text_field :email%>
+      <%=f.label "Username"%>
+      <%=f.text_field :handle%>
+      <%=f.label "Password"%>
+      <%=f.text_field :password%>
+    </div>
+    <div class="box_footer">
+      <button class="btn btn-primary">Create your awesome account</button>
+    </div>
+  </div>
+</div>
+<% end %>

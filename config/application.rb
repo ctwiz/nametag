@@ -9,6 +9,18 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
+
+ActionMailer::Base.smtp_settings = {
+  :port           =>  587, 
+  :address        => 'smtp.mailgun.org',
+  :user_name      => 'postmaster@nametag.mailgun.org',
+  :password       => '06nrfp61g7x6',
+  :domain         => 'nametag.mailgun.org',
+  :authentication => :plain,
+}
+ActionMailer::Base.delivery_method = :smtp
+
+
 module Nametag
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
