@@ -1,3 +1,13 @@
       <!--footer>
         <p>&copy; Company 2012</p>
       </footer-->
+    <% if Rails.env.development? # only show the footer if you're in dev mode
+      %>
+      <footer class="row">
+         <div class="twelvecol pushed last">
+          <div style="color:red">Params</div>
+          <%= debug(params) -%>
+          <br>
+        </div>
+      </footer>
+    <% end %>

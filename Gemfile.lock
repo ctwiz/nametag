@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
-  revision: 65a0e966ce2aa10b81c87a6c6ced8457b113d8a9
+  revision: 9649b2c0b12a374dfece50a3ae31cc56ad778300
   specs:
     twitter-bootstrap-rails (2.2.0)
       actionpack (>= 3.1)
@@ -10,33 +10,34 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    actionmailer (3.2.8)
-      actionpack (= 3.2.8)
+    actionmailer (3.2.11)
+      actionpack (= 3.2.11)
       mail (~> 2.4.4)
-    actionpack (3.2.8)
-      activemodel (= 3.2.8)
-      activesupport (= 3.2.8)
+    actionpack (3.2.11)
+      activemodel (= 3.2.11)
+      activesupport (= 3.2.11)
       builder (~> 3.0.0)
       erubis (~> 2.7.0)
       journey (~> 1.0.4)
       rack (~> 1.4.0)
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
-      sprockets (~> 2.1.3)
-    activemodel (3.2.8)
-      activesupport (= 3.2.8)
+      sprockets (~> 2.2.1)
+    activemodel (3.2.11)
+      activesupport (= 3.2.11)
       builder (~> 3.0.0)
-    activerecord (3.2.8)
-      activemodel (= 3.2.8)
-      activesupport (= 3.2.8)
+    activerecord (3.2.11)
+      activemodel (= 3.2.11)
+      activesupport (= 3.2.11)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
-    activeresource (3.2.8)
-      activemodel (= 3.2.8)
-      activesupport (= 3.2.8)
-    activesupport (3.2.8)
+    activeresource (3.2.11)
+      activemodel (= 3.2.11)
+      activesupport (= 3.2.11)
+    activesupport (3.2.11)
       i18n (~> 0.6)
       multi_json (~> 1.0)
+    addressable (2.3.2)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     builder (3.0.4)
@@ -48,6 +49,8 @@ GEM
       execjs
     coffee-script-source (1.4.0)
     commonjs (0.2.6)
+    domainatrix (0.0.11)
+      addressable
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -63,7 +66,7 @@ GEM
     less-rails (2.2.6)
       actionpack (>= 3.1)
       less (~> 2.2.0)
-    libv8 (3.11.8.4)
+    libv8 (3.15.11.1)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -72,24 +75,24 @@ GEM
     multi_json (1.5.0)
     pg (0.14.1)
     polyglot (0.3.3)
-    rack (1.4.1)
+    rack (1.4.3)
     rack-cache (1.2)
       rack (>= 0.4)
     rack-ssl (1.3.2)
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
-    rails (3.2.8)
-      actionmailer (= 3.2.8)
-      actionpack (= 3.2.8)
-      activerecord (= 3.2.8)
-      activeresource (= 3.2.8)
-      activesupport (= 3.2.8)
+    rails (3.2.11)
+      actionmailer (= 3.2.11)
+      actionpack (= 3.2.11)
+      activerecord (= 3.2.11)
+      activeresource (= 3.2.11)
+      activesupport (= 3.2.11)
       bundler (~> 1.0)
-      railties (= 3.2.8)
-    railties (3.2.8)
-      actionpack (= 3.2.8)
-      activesupport (= 3.2.8)
+      railties (= 3.2.11)
+    railties (3.2.11)
+      actionpack (= 3.2.11)
+      activesupport (= 3.2.11)
       rack-ssl (~> 1.3.2)
       rake (>= 0.8.7)
       rdoc (~> 3.4)
@@ -103,8 +106,9 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
-    sprockets (2.1.3)
+    sprockets (2.2.2)
       hike (~> 1.2)
+      multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.6)
@@ -126,11 +130,12 @@ PLATFORMS
 DEPENDENCIES
   bcrypt-ruby
   coffee-rails (~> 3.2.1)
+  domainatrix
   jquery-rails
   less-rails
   libv8
   pg
-  rails (= 3.2.8)
+  rails (= 3.2.11)
   sass-rails (~> 3.2.3)
   sqlite3
   therubyracer

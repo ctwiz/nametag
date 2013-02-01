@@ -11,11 +11,26 @@
  *= require_self
  *= require_tree .
  */
+span.header_links {
+  font-size: 9pt; 
+  font-weight: normal;
+  a {
+    margin-top: -15px;
+  }
+}
+.clearfix {
+  clear: both;
+}
+
+#flash {
+  width: 440px;
+  margin: 0 auto;
+}
 .hero {
   text-align: center;
   font-size: 25pt;
   line-height: 40pt;
-  padding-top: 40px;
+  padding-top: 30px;
   padding-bottom: 30px;
   .message {
     font-family: "Garamond"

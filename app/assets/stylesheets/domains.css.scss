@@ -1,0 +1,13 @@
+// Place all the styles related to the domains controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+table#domains {
+  text-align: center;
+  tr.new {
+    background-color: #FCEDF3;
+  }
+  tr td {
+    padding: 5px;
+  }
+}

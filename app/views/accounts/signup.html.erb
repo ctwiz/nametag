@@ -14,10 +14,10 @@
       <%=f.label "Username"%>
       <%=f.text_field :handle%>
       <%=f.label "Password"%>
-      <%=f.text_field :password%>
+      <%=f.password_field :password%>
     </div>
     <div class="box_footer">
-      <button class="btn btn-primary">Create your awesome account</button>
+      <%= f.submit "Create your awesome account!", :class=>"btn btn-primary"%>
     </div>
   </div>
 </div>

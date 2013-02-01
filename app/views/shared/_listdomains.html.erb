@@ -1,0 +1,23 @@
+  <table id="domains">
+    <th>
+      <tr>
+      <td>Name</td><td>Confirmed</td><td>Public</td><td>Available</td><td>Price</td>
+      </tr>
+    </th>
+    <tbody>
+      <% @domains.each do |dom| %>
+        <% if @new_domain_ids && @new_domain_ids.include?(dom.id) %>
+          <tr class="new">
+        <% else %>
+          <tr>
+        <% end %>
+          <td><%= link_to domain_path(dom.id) do %><%=dom.name%><% end %></td>
+          <td><%=dom.confirmed%></td>  
+          <td><%=dom.public%></td>
+          <td><%=dom.for_sell%></td>
+          <td><%=dom.price%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+

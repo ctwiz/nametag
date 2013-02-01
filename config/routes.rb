@@ -1,10 +1,17 @@
 Nametag::Application.routes.draw do
-  get "welcome/index"
+
+  match "domains/" => "domains#index", :via => [:get, :post]
 
   resources :domains
   resources :users
+
+  match "/users/follow" => "users#follow", :via => :post
   
   match "signup/" => "accounts#signup", :via => :get, :as => "signup"
+  match "signup/" => "accounts#signup", :via => :post, :as => "signup"
+  match "signin/" => "accounts#signin", :via => :get, :as => "signin"
+  match "signin/" => "accounts#signin", :via => :post, :as => "signin"
+  match "signout/" => "accounts#signout", :via => :get, :as => "signout"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

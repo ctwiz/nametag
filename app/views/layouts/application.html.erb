@@ -39,16 +39,26 @@
     <div class="container main">
         <div class="row">
           <div class="span12">
-            <%= bootstrap_flash %>
+
+<% if flash %>
+  <section id="flash">
+    <% flash.each do |key, value| %>
+      <div class="alert alert-error">
+      <% unless value.instance_of?(String) %>
+        <%=value.messages.flatten.join(" ") %>
+      <% else %>
+        <%=value%>
+      <% end %>
+      </div>
+    <% end %>
+  </section>
+<% end %>
             <%= yield %>
           </div>
-          <%#=render 'shared/sidebar'%>
         </div><!--/row-->
 
         <%=render 'shared/footer'%>
-
     </div> <!-- /container -->
-
     <!-- Javascripts
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

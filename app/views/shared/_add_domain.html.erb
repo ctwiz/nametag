@@ -1,0 +1,18 @@
+<div class="box_container navbar-inner main_box">
+  <div class="box navbar">
+    <div class="box_title brand">
+      Enter the domains you own here<br><span style="font-size: 10pt;">(comma or newline seperated)</span>
+    </div>
+    <div class="box_body">
+      <textarea name="domains"></textarea>
+    </div>
+    <div class="box_footer">
+      <% if controller.controller_name == "domains" %>
+        <%=f.submit "Add these domains", :class => "btn btn-primary"%>
+      <% else %>
+        <%=f.submit "Signup", :class => "btn btn-primary"%>
+      <% end %>
+    </div>
+  </div>
+</div>
+

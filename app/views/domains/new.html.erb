@@ -1,0 +1,6 @@
+<div class="container">
+  <% # breaking restful standards! %>
+  <%=form_for "nada", :url => domains_path() do |f| %>
+    <%= render 'shared/add_domain', :f => f %>
+  <% end %>
+</div>

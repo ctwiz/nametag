@@ -1,0 +1,6 @@
+<div class="container">
+  <input type="hidden" id="follow_id" value="<%=@user.id%>">
+  <h1><%=@user.handle%>'s domains</h1>
+  <button class="follow btn"><i class="icon-plus"></i> follow</button>
+  <%=render 'shared/listdomains' %> 
+</div>

@@ -6,11 +6,18 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand logo" href="#">Nametag</a> <div class="brand motto">&#183; Domains with friends</div>
+          <a class="brand logo" href="/">Nametag</a> <div class="brand motto">&#183; Social Domains</div>
           <div class="nav-collapse pull-right">
             <ul class="nav">
+              <% if session[:user_id].blank? %>
               <li><%= link_to "Signup", signup_path()  %></li>
-              <li><%= link_to "Signin", "/path2"  %></li>
+              <li><%= link_to "Signin", signin_path()  %></li>
+              <% else %>
+              <li><%= link_to session[:username], users_path() %></li>
+              <li><%= link_to "Domains", domains_path() %></li>
+              <li><%= link_to "Profile", users_path() %></li>
+              <li><%= link_to "Signout", signout_path() %></li>
+              <% end %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

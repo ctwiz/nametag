@@ -1,0 +1,42 @@
+
+<div class="container">
+
+<h1>Your Domains <span class="header_links">
+  <%=link_to new_domain_path(), :class => ["btn btn-primary"] do %>
+    Add a domain
+  <% end %>  
+  </span>
+</h1>
+  <% unless @domains.count > 0 %>
+    <div class="alert alert-critical">You have no domains. Register and verify a domain</div>
+  <% else %>
+    <%=render 'shared/listdomains'%>
+  <% end %>
+
+  <h1>Friends Domains</h1>
+  <% unless @followers.count > 0 %>
+    <div class="alert alert-critical">Start following some friends to discover great domains in your network.</div>
+  <% else %>
+    <table id="domains">
+      <th>
+        <tr>
+        <td>User</td><td>Name</td><td>Confirmed</td><td>Public</td><td>Available</td><td>Price</td>
+        </tr>
+      </th>
+      <tbody>
+        <% @followers.each do |flwr| %>
+          <% flwr.domains.each do |dom| %>
+          <tr>
+            <td><%=link_to user_path(flwr.user.id) do %><%=flwr.user.handle%><% end %></td>
+            <td><%=link_to domain_path(dom.id) do %><%=dom.name%><% end %></td>
+            <td><%=dom.confirmed%></td>  
+            <td><%=dom.public%></td>
+            <td><%=dom.for_sell%></td>
+            <td><%=dom.price%></td>
+          </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

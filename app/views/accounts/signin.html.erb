@@ -1,0 +1,19 @@
+<%=form_for signin_path :via => "POST" do |f|%>
+<div class="box_container navbar-inner main_box">
+  <div class="box navbar">
+    <div class="box_title brand">
+      Login to your account
+    </div>
+    <div class="box_body brand">
+      <%=f.label :email %>
+      <%=f.text_field :email, :name => :email%>
+      <%=f.label :password %>
+      <%=f.password_field :password , :name => :password%>
+    </div>
+    <div class="clearfix"></div>
+    <div class="box_footer">
+      <%= f.submit "Login!", :class=>"btn btn-primary"%>
+    </div>
+  </div>
+</div>
+<% end %>

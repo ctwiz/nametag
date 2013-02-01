@@ -14,3 +14,12 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+
+$(function() {
+ $(".follow").click(function(e) {
+    var follow_id = $("#follow_id").val();
+    $.post("/users/follow", { 'id' : follow_id }, function() {
+      $(".follow").addClass("btn-primary"); 
+    });
+  }); 
+});
