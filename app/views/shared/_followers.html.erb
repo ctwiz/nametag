@@ -1,0 +1,12 @@
+<div class="followers">
+  <h2>Followers</h2>
+  <% @followers.each do |f| %>  
+    <div class="follower">
+      <div class="name">
+        <%=link_to user_path(f.user.id) do %>
+        <%=f.user.handle%>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

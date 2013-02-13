@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130107132654) do
+ActiveRecord::Schema.define(:version => 20130207111806) do
 
   create_table "accounts", :force => true do |t|
     t.string   "provider"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20130107132654) do
     t.string   "handle"
     t.string   "password"
     t.string   "password_salt"
+    t.string   "key"
   end
 
 end

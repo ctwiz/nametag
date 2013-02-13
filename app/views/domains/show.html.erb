@@ -1,0 +1,41 @@
+<div class="container">
+  <input type="hidden" id="follow_id" value="<%=@domain.id%>">
+  <h1><%=@domain.name%></h1>
+
+  <% if session[:user_id] %>
+    <% @does_follow = @followers.select { |f| f.follower == session[:user_id] }.count  %>
+    <% if @does_follow > 0 %>
+      <% @follows = true %>
+    <% else %>
+      <% @follows = false %>
+    <% end %>
+  <% end %>
+
+  <% unless @is_owner %>
+    <% if @follows == true %>
+      <button class="domain_follow btn btn-primary"><i class="icon-plus"></i> <span class="flw_txt"> unfollow</span></button>
+    <% else %>
+      <button class="domain_follow btn"><i class="icon-plus"></i> <span class="flw_txt">follow</span></button>
+    <% end %>
+  <% end %>
+  
+  <div class="domain_labels">
+    <% if @domain.confirmed == true %>
+    <span class="label label-success">Confirmed</span>
+    <% else %>
+    <span class="label label-important">Unconfirmed</span>
+      <% if @is_owner %>
+        <a href="#">Confirm</a>
+      <% end %>
+    <% end %>
+
+    <% if @domain.for_sell == true %>
+    <span class="label label-success">Available</span>
+    <% else %>
+    <span class="label label-important">Unavailable</span>
+    <% end %>
+
+  </div><!-- domain_labels  -->
+
+  <%=render 'shared/followers'%>
+</div>

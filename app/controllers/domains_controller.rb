@@ -6,6 +6,39 @@ class DomainsController < ApplicationController
     @followers = UserFollower.includes(:user, :user => :domains).where(:follows => session[:user_id])
   end
 
+  def show
+    @domain = Domain.includes(:user).find(params[:id])
+    @followers = @domain.followers.includes(:user)
+    if session[:user_id]
+      if @domain.user.id == session[:user_id]
+        @is_owner = true
+      else
+        @is_owner = false
+      end
+    else
+      @is_owner = false
+    end
+
+  end
+
+  def follow
+    follow_id = params[:id]
+
+    unless DomainFollower.where(:follows => follow_id).where(:follower => session[:user_id]).empty?
+      # Should then unfollow
+      DomainFollower.where(:follower => session[:user_id]).where(:follows => follow_id).destroy_all
+      render :json => true
+      return 
+    end
+
+    if DomainFollower.create(:follower => session[:user_id], :follows => follow_id)
+      render :json => true
+    else
+      render :json => false
+    end
+  end
+
+
   def add_domains 
     domains = split_domains
     new_domain_ids = []

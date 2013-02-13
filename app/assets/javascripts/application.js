@@ -16,10 +16,29 @@
 //= require_tree .
 
 $(function() {
- $(".follow").click(function(e) {
+ $(".user_follow").click(function(e) {
     var follow_id = $("#follow_id").val();
     $.post("/users/follow", { 'id' : follow_id }, function() {
-      $(".follow").addClass("btn-primary"); 
+      var flw = $(".user_follow");
+      flw.toggleClass("btn-primary");
+      if(flw.hasClass("btn-primary")) {
+        flw.find(".flw_txt").html('unfollow');  
+      } else {
+        flw.find(".flw_txt").html('follow');
+      }
+    });
+  }); 
+
+ $(".domain_follow").click(function(e) {
+    var follow_id = $("#follow_id").val();
+    $.post("/domains/follow", { 'id' : follow_id }, function() {
+      var flw = $(".domain_follow");
+      flw.toggleClass("btn-primary");
+      if(flw.hasClass("btn-primary")) {
+        flw.find(".flw_txt").html('unfollow');  
+      } else {
+        flw.find(".flw_txt").html('follow');
+      }
     });
   }); 
 });

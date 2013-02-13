@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
    :message => "can only contain letters and numbers."
 
   has_many :domains
-  has_many :followers, :class_name => 'UserFollower', :foreign_key => "follower" 
+  has_many :followers, :class_name => 'UserFollower', :foreign_key => "follows" 
 
   def build_params
     @salt = build_salt

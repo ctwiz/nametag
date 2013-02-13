@@ -6,7 +6,8 @@ Nametag::Application.routes.draw do
   resources :users
 
   match "/users/follow" => "users#follow", :via => :post
-  
+  match "/domains/follow" => "domains#follow", :via => :post 
+
   match "signup/" => "accounts#signup", :via => :get, :as => "signup"
   match "signup/" => "accounts#signup", :via => :post, :as => "signup"
   match "signin/" => "accounts#signin", :via => :get, :as => "signin"
