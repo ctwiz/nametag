@@ -42,7 +42,7 @@ class DomainsController < ApplicationController
   def add_domains 
     domains = split_domains
     new_domain_ids = []
-    unless domains.blank?
+    unless domains.blank? || domains == false
       domains.each do |domain|
         domain = Domainatrix.parse(domain)
         domain = domain.domain + "." + domain.public_suffix
@@ -60,12 +60,16 @@ class DomainsController < ApplicationController
     elsif params[:domains]
       domains = params[:domains]
     end
-    domains_array = domains.split(/[,\r\n\s]/).reject(&:empty?)
-    if domains_array.count == 0 && domains.length > 0
-      domains_array = []
-      domains_array.push(domains)
+    if domains 
+      domains_array = domains.split(/[,\r\n\s]/).reject(&:empty?)
+      if domains_array.count == 0 && domains.length > 0
+        domains_array = []
+        domains_array.push(domains)
+      end
+      return domains_array
+    else
+      return false
     end
-    return domains_array
   end
 
   def new
