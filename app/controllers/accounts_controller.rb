@@ -19,7 +19,7 @@ class AccountsController < ApplicationController
       email = params[:email]
       password = params[:password]
       user = User.find_by_email(email)
-      if user.authenticate(user.password, password, user.password_salt) 
+      if user && user.authenticate(user.password, password, user.password_salt) 
         session[:user_id] = user.id
         session[:username] = user.handle
         redirect_to domains_path()
