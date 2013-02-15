@@ -19,7 +19,6 @@ class AccountsController < ApplicationController
       email = params[:email]
       password = params[:password]
       user = User.find_by_email(email)
-      raise user.to_yaml
       if user && user.authenticate(user.password, password, user.password_salt) 
         session[:user_id] = user.id
         session[:username] = user.handle
