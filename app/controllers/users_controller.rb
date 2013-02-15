@@ -16,6 +16,7 @@ class UsersController < ApplicationController
         return 
       end
 
+      raise params.to_yaml
       if UserFollower.create(:follower => session[:user_id], :follows => follow_id)
         render :json => true
       else
