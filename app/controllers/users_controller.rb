@@ -16,7 +16,7 @@ class UsersController < ApplicationController
         return 
       end
 
-      @follower = UserFollower.new(:follower => session[:user_id])
+      @follower = UserFollower.new(:follower => session[:user_id].to_i)
       @follower.follows = follow_id
       if @follower.save
         render :json => true
