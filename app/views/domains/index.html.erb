@@ -14,7 +14,7 @@
   <% end %>
 
   <h1>Friends Domains</h1>
-  <% unless @followers.count > 0 %>
+  <% unless @friends %>
     <div class="alert alert-critical">Start following some friends to discover great domains in your network.</div>
   <% else %>
     <table id="domains">
@@ -24,10 +24,10 @@
         </tr>
       </th>
       <tbody>
-        <% @followers.each do |flwr| %>
-          <% flwr.domains.each do |dom| %>
+        <% @friends.each do |flwr| %>
+          <% flwr.follows.domains.each do |dom| %>
           <tr>
-            <td><%=link_to user_path(flwr.user.id) do %><%=flwr.user.handle%><% end %></td>
+            <td><%=link_to user_path(flwr.follows.id) do %><%=flwr.follows.handle%><% end %></td>
             <td><%=link_to domain_path(dom.id) do %><%=dom.name%><% end %></td>
             <td><%=dom.confirmed%></td>  
             <td><%=dom.public%></td>

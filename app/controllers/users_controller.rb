@@ -2,8 +2,7 @@ class UsersController < ApplicationController
   def index
     @user = User.find(session[:user_id])
     @domains = @user.domains
-    @domains_following = DomainFollower.includes(:domain).where(:follower => @user.id)
-    #raise @domains_following.first.domains.to_yaml
+    @domains_following = DomainFollower.includes(:domain, :domain => :user).where(:follower => @user.id)
   end
   def follow
     follow_id = params[:id]
@@ -29,14 +28,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @domains = @user.domains
     @followers = @user.followers
-
   end
 
   def create
     @user = params[:user]
     @newuser = User.new(@user)
     @newuser.build_params
-    if @newuser.save
+    if @newuser.build_params && @newuser.save
       session[:user_id] = @newuser.id
       session[:username] = @newuser.handle
       redirect_to domains_path()

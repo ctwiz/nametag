@@ -3,8 +3,8 @@
   <% @followers.each do |f| %>  
     <div class="follower">
       <div class="name">
-        <%=link_to user_path(f.user.id) do %>
-        <%=f.user.handle%>
+        <%=link_to user_path(f.follower.id) do %>
+        <%=f.follower.handle%>
         <% end %>
       </div>
     </div>

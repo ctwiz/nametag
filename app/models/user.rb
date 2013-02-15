@@ -14,10 +14,13 @@ class User < ActiveRecord::Base
   has_many :followers, :class_name => 'UserFollower', :foreign_key => "follows" 
 
   def build_params
-    @salt = build_salt
-    password_salt = @salt
-    @password = build_password(password, password_salt)
-    password = @password 
+    begin
+      self.password_salt = build_salt
+      self.password = build_password(password, password_salt)
+    rescue
+      return false
+    end
+    return true
   end
 
   def build_password(password, salt)

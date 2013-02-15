@@ -3,13 +3,13 @@ class DomainsController < ApplicationController
   def index
     @new_domains_ids = add_domains()
     @domains = Domain.where(:user_id => session[:user_id])
-    @followers = UserFollower.includes(:user, :user => :domains).where(:follows => session[:user_id])
+    @friends = UserFollower.includes(:follows, :follows => :domains).where('follower = ?', session[:user_id])
   end
 
   def show
     @domain = Domain.includes(:user).find(params[:id])
-    @followers = @domain.followers.includes(:user)
-    if session[:user_id]
+    @followers = DomainFollower.where(:follows => @domain.id)
+    if @domain && session[:user_id]
       if @domain.user.id == session[:user_id]
         @is_owner = true
       else
@@ -42,7 +42,7 @@ class DomainsController < ApplicationController
   def add_domains 
     domains = split_domains
     new_domain_ids = []
-    if domains 
+    unless domains.blank?
       domains.each do |domain|
         domain = Domainatrix.parse(domain)
         domain = domain.domain + "." + domain.public_suffix
@@ -56,10 +56,16 @@ class DomainsController < ApplicationController
 
   def split_domains
     if session[:domains] 
-      domains = session[:domains].split(/[,\r\n\s]/).reject!(&:empty?)
+      domains = session[:domains]
     elsif params[:domains]
-      domains = params[:domains].split(/[,\r\n\s]/).reject!(&:empty?)
+      domains = params[:domains]
     end
+    domains_array = domains.split(/[,\r\n\s]/).reject(&:empty?)
+    if domains_array.count == 0 && domains.length > 0
+      domains_array = []
+      domains_array.push(domains)
+    end
+    return domains_array
   end
 
   def new
